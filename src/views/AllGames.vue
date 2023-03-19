@@ -3,7 +3,7 @@
 import { ref } from 'vue'
 import Card from "../components/Card.vue";
 
-const Games = ref([])
+const Games = ref([] as any[])
 function GetListePopuAnime() {
   fetch('https://api.rawg.io/api/games?key=0da5f74d36bd43b0bf7d58de72dd0640&page_size=20')
     .then(response => response.json())
