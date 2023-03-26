@@ -5,6 +5,7 @@ import NotFound from './views/NotFound.vue'
 import Contact from './views/Contact.vue'
 import AllGames from './views/AllGames.vue';
 import FilAnime from './views/FilAnime.vue';
+import GameDetail from './views/GameDetail.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/FilAnime',
     name: 'FilAnime',
     component: FilAnime
+  },
+  {
+    path: '/GameDetail/:id',
+    name: 'GameDetail',
+    component: GameDetail
   }
 ]
 
