@@ -4,13 +4,16 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute() 
-const Games = ref(null)
+const Games = ref([] as any[])
 
 function fetchDetailGame() {
     fetch(`https://api.rawg.io/api/games/${route.params.id}?key=0da5f74d36bd43b0bf7d58de72dd0640`)
         .then(response => response.json())
         .then(data => {
-            Games.value = data
+                  
+            Games.value = data.results
+        
+            
          
         })
 }
@@ -32,6 +35,7 @@ fetchDetailGame()
       <div class="lg:pr-8 lg:pt-4">
         <div class="lg:max-w-lg">
           <h2 class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+          
           <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{Games.slug}}</p>
           <p class="mt-6 text-lg leading-8 text-gray-600">{{ Games.description }}</p>
           <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
@@ -64,9 +68,9 @@ fetchDetailGame()
                 Plateformes jouable
               </dt>
               <dd class="inline">
-                <div v-for="(Gaming, index) in Games.parent_platforms.platform" :key="Gaming.parent_platforms.platform.id">
+                <div v-for="(Gaming, index) in Games" :key="Gaming.parent_platforms.platform.id">
                     
-                  <p>{{ Games.parent_platforms.platform.name }}</p>
+                  {{ Gaming.parent_platforms.platform.name }}
                     <!--<div v-if="Gaming.parent_platforms.platform.name === 'PC'">
                         <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"></path>

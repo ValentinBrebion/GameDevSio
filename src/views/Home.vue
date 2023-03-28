@@ -1,8 +1,10 @@
 <script setup lang="ts">
 
 import { useNow, useDateFormat } from '@vueuse/core'
+import { useFps } from '@vueuse/core'
 
 const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
+const fps = useFps()
 
 </script>
 
@@ -202,13 +204,13 @@ const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <dl class="grid grid-cols-1 gap-y-16 gap-x-8 text-center lg:grid-cols-3">
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">{{formatted}}</dt>
+        <dt class="text-base leading-7 text-5xl text-gray-600">{{formatted}}</dt>
         <dd class="order-first font-semibold tracking-tight text-gray-900 text-5xl">Date aujourd'hui</dd>
       </div>
 
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">Assets under holding</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$119 trillion</dd>
+        <dt class="text-base leading-4 text-gray-600">Tes FPS de Gamer</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{fps}}</dd>
       </div>
 
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
