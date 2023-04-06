@@ -47,7 +47,7 @@
           </dl>
         </div>
       </div>
-      <img src="e/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzMyL2Zl/LzBlLzMyZmUwZTJk/ZDlhNmE3MzdkNDM2/ZjdjNDA5NWNkMjk4/LnBuZw" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
+      <img src="" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442">
     </div>
   </div>
 </div>
