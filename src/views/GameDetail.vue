@@ -6,13 +6,13 @@ import GameDetail from '../components/DetailJeux.vue'
 
 
 const route = useRoute() 
-const Games = ref({})
+const Games = ref({} as any)
 
 function fetchDetailGame() {
     fetch(`https://api.rawg.io/api/games/${route.params.id}?key=0da5f74d36bd43b0bf7d58de72dd0640`)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+  
           Games.value = data
          
             console.log(Games)
