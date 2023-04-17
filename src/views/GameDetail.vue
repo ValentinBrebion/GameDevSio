@@ -31,27 +31,32 @@ fetchDetailGame()
 
 </script>
 
+
 <template>
-   
-
- <GameDetail>
+ <GameDetail :img="Games.background_image">
+ <template #titre>{{ Games.name }}</template>
+ <template #description> {{ Games.description }}</template>
  
-  <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ Games.slug }}</p>
-  <p class="mt-6 text-lg leading-8 text-gray-600">{{ Games.description }}</p>
-
- </GameDetail>
-                    
-
-  
-
-                    
-                    
-                
-
-            
-        
-        
-
-  
+<template #genres v-for="(genres, index) in Games.genres" :key="Games.genres.id">
+{{ genres.name }}
 </template>
+
+<template #Developpeurs v-for="(developpeurs,index) in Games.developers">
+{{ developpeurs.name }}
+</template>
+
+<template #Notation v-for="(Note, index) in Games.ratings" >
+  
+  {{ Note.title }} - {{ Note.count }} - {{ Note.percent }} %
+</template>
+    
+   
+  
+   
+ </GameDetail>
+</template>
+  
+
+  
+
 
