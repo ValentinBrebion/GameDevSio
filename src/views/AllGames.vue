@@ -23,7 +23,7 @@ GetListeJeux()
   
 
   
-    <div v-if="Games.previous == null" >
+   <!-- <div v-if="Games.previous == null" >
     <NavBarDetail>
        
             <template #buttonnext>
@@ -44,7 +44,7 @@ GetListeJeux()
    
    
 </NavBarDetail>
-</div>
+</div>-->
         <div class="grid grid-cols-4 gap-4 pt-20">
             
             <div v-for="(Gaming, index) in Games" :key="Gaming.id">
