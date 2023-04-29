@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import NotFound from './views/NotFound.vue'
 import Contact from './views/Contact.vue'
 import AllGames from './views/AllGames.vue';
-import FilAnime from './views/FilAnime.vue';
+import CreatorDev from './views/CreatorGame.vue';
 import GameDetail from './views/GameDetail.vue';
 
 const routes = [
@@ -29,9 +29,9 @@ const routes = [
     component: AllGames
   },
   {
-    path: '/FilAnime',
-    name: 'FilAnime',
-    component: FilAnime
+    path: '/Creator',
+    name: 'Creator',
+    component: CreatorDev
   },
   {
     path: '/GameDetail/:id',

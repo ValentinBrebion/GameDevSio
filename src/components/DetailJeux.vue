@@ -46,13 +46,41 @@ const props = defineProps({
                 </svg>
                 Notation
               </dt>
-              <div class="grid grid-cols-3 gap-5">
+              <div class=" overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
                 
-                <p class="text-lg font-semibold ">titre - nbVote - %</p>
+                <th scope="col" class="px-6 py-3">
+                   Titre
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nb Vote
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pourcentage
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                
+                <td class="px-6 py-4">
                    
-                
-   
-               </div>
+                </td>
+                <td class="px-6 py-4">
+                    Laptop
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+</div>
+              
               <div class="grid grid-cols-3 gap-5 ">
                 
                <slot name="Notation"></slot>

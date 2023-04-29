@@ -2,6 +2,8 @@
 
 import { ref } from 'vue'
 import Card from "../components/Card.vue";
+import NavBarDetail from "../components/NavAllGames.vue";
+
 
 const Games = ref([] as any[])
 function GetListeJeux() {
@@ -18,8 +20,33 @@ GetListeJeux()
 </script>
 
 <template>
-   <div>
+  
+
+  
+    <div v-if="Games.previous == null" >
+    <NavBarDetail>
+       
+            <template #buttonnext>
+            <button type="button" :href="Games.next" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">suivant</button>
+        </template>
+        
+        
+    </NavBarDetail>
+</div>
+<div v-else>
+    <NavBarDetail>
+        <template #buttonnext>
+            <button type="button" :href="Games.next" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">suivant</button>
+        </template>
+       <template #btnprevious>
+       <button type="button" :href="Games.previous" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">suivant</button>
+   </template>
+   
+   
+</NavBarDetail>
+</div>
         <div class="grid grid-cols-4 gap-4 pt-20">
+            
             <div v-for="(Gaming, index) in Games" :key="Gaming.id">
                 <Card>
                     <img class="w-60 h-32 mt-10 mx-auto" :src="Gaming.background_image">
@@ -83,6 +110,6 @@ GetListeJeux()
                 </Card>
             </div>
         </div>
-    </div>
+    
 </template>
 

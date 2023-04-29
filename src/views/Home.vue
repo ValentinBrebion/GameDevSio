@@ -1,11 +1,11 @@
 <script setup lang="ts">
-
+import { ref } from 'vue'
 import { useNow, useDateFormat } from '@vueuse/core'
 import { useFps } from '@vueuse/core'
 
 const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
 const fps = useFps()
-
+const count = ref(0)
 </script>
 
 <template>
@@ -214,8 +214,14 @@ const fps = useFps()
       </div>
 
       <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">New users annually</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">46,000</dd>
+        <div v-if="count == 10">
+        <p>Wow ! continue !! </p>
+        </div>
+        <div v-if="count > 10 && count<= 20">
+        <p>Mec tu gères ! </p>
+        </div>
+        <dt class="text-base leading-7 text-gray-600">{{ count  }}</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"><button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" @click="count++">Clique sur moi</button></dd>
       </div>
     </dl>
   </div>

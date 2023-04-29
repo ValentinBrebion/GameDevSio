@@ -37,7 +37,7 @@ fetchDetailGame()
  <template #titre>{{ Games.name }}</template>
  <template #description> {{ Games.description }}</template>
  
-<template #genres v-for="(genres, index) in Games.genres" :key="Games.genres.id">
+<template #genres v-for="(genres, index) in Games.genres" :key="Games.id">
 {{ genres.name }}
 </template>
 
@@ -45,8 +45,8 @@ fetchDetailGame()
 {{ developpeurs.name }}
 </template>
 
-<template #Notation v-for="(Note, index) in Games.ratings" >
-  
+<template #Notation v-for="Note in Games.ratings" >
+ 
   {{ Note.title }} - {{ Note.count }} - {{ Note.percent }} %
 </template>
     
