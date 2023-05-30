@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Navbar from "../components/NavBar.vue";
+
 import { ref } from 'vue'
 import { useNow, useDateFormat } from '@vueuse/core'
 import { useFps } from '@vueuse/core'
@@ -15,7 +15,7 @@ const count = ref(0)
 </script>
 <template>
 
-<Navbar/>
+
 <div class="bg-white">
  
 
