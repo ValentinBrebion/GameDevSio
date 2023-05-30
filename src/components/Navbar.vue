@@ -1,13 +1,9 @@
-<script setup lang="ts">
 
-
-
-</script>
 
 <template>
     <nav class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20  top-0 left-0 border-b border-gray-200 dark:border-gray-600">
   <div class="container flex flex-wrap items-center justify-between mx-auto">
-  <a href="/" class="flex items-center">
+  <a href="/PageConnecter" class="flex items-center">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo">
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">GamerCamp</span>
   </a>
@@ -27,14 +23,45 @@
         <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
       </li>
       <li>
-        <a href="/AllGames" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tous les jeux</a>
+        <a href="/AllGames" v-if="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tous les jeux</a>
       </li>
       <li>
-        <a href="/Creator" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Développeurs</a>
+        <a href="/Creator" v-if="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Développeurs</a>
       </li>
-      
+      <li>
+        <a @click="handleSignOut" v-if="isLoggedIn" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Deconnexion</a>
+      </li>
     </ul>
   </div>
   </div>
 </nav>
 </template>
+
+<script setup lang="ts">
+
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import router from "../router";
+
+const isLoggedIn = ref(false);
+
+let auth = ref({} as any);
+
+onMounted(() => {
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if(user){
+            isLoggedIn.value = true;
+        }else{
+            isLoggedIn.value = false;
+        }
+    })
+});
+
+const handleSignOut = () =>{
+    signOut(auth).then(() => {
+        router.push("/auth");
+    })
+}
+
+</script>
