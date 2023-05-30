@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import router from './router';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import Home from './views/Home.vue';
 import NotFound from './views/NotFound.vue';
@@ -73,8 +74,31 @@ const routes = [
 ]
 
 
-
 export default createRouter({
   history: createWebHistory(),
   routes
 });
+
+const getCurrentUser = () => {
+  return new Promise((resolve,reject) => {
+    const RemoveListener = onAuthStateChanged(
+      getAuth(),(user)=>{
+        RemoveListener();
+        resolve(user);
+      }, 
+      reject
+    );
+  });
+}
+
+router.beforeEach( async (to, from, next) => {
+  if(to.matched.some((record)=> record.meta.requiresAuth)){// verifie si chaque record requiert une authentification
+    if(await getCurrentUser()){
+      next();
+    }else{
+      next("/auth");
+    }
+  }else{
+    next();
+  }
+})
