@@ -22,7 +22,7 @@ import Navbar from "./components/Navbar.vue";
 import NavSSConn from "./components/NavBarSSConn.vue";
 import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import router from "../router";
+
 
 const isLoggedIn = ref(false);
 
